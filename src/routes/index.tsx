@@ -293,7 +293,7 @@ function Contact() {
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
-    const data = Object.fromEntries(new FormData(form)) as Record<string, string>;
+    const data = Object.fromEntries(new FormData(form)) as { name?: string; email?: string; subject?: string; message?: string };
     if (!data.name?.trim() || !/^\S+@\S+\.\S+$/.test(data.email ?? "") || !data.message?.trim()) {
       setStatus("error"); setError("Merci de renseigner un nom, un e-mail valide et un message."); return;
     }
